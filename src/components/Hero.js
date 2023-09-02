@@ -8,15 +8,15 @@ const Hero = () => {
   return (
     <Wrapper className="section-center">
       <Content>
-        <h1>
+        <Heading>
           Design your <br />
           comfort zone
-        </h1>
-        <p>
+        </Heading>
+        <Paragraph>
           Our e-commerce platform offers a wide range of products, fast
           shipping, hassle-free returns, and exceptional customer service. Shop
           with us for great deals on high-quality products.
-        </p>
+        </Paragraph>
         <StyledLink to="/products" className="btn hero-btn">
           shop now
         </StyledLink>
@@ -77,6 +77,14 @@ const Content = styled.article`
       font-size: 1rem;
     }
   }
+`;
+
+const Heading = styled.h1`
+  margin-bottom: 2rem;
+`;
+
+const Paragraph = styled.p`
+  font-size: 1rem;
 `;
 
 const ImageContainer = styled.article`
