@@ -95,3 +95,5 @@ export const services = [
     text: "Our company has a rich history of creating custom furniture that spans several generations. We were founded by a family of craftsmen who were passionate about creating beautiful and functional furniture that would stand the test of time. Today, we continue that tradition by using the same time-honored techniques and attention to detail that our founders used over a century ago.",
   },
 ];
+
+export const products_url = "https://course-api.com/react-store-products";
