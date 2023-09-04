@@ -29,7 +29,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchProducts(`${single_product_url}${id}`);
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <Loading />;
