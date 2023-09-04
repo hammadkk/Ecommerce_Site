@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const BreadCrumb = ({ title, product }) => {
+const BreadCrumb = ({ title, Product }) => {
   return (
     <Wrapper>
       <Container className="section-center">
         <Heading>
-          <CrumbLink to="/">Home </CrumbLink>
-          {product && <CrumbLink to="/products">/ Products</CrumbLink>}/ {title}
+          <Link to="/">Home </Link>
+          {Product && <Link to="/products">/ Products</Link>}/ {title}
         </Heading>
       </Container>
     </Wrapper>
@@ -38,16 +38,6 @@ const Heading = styled.h3`
     transition: var(--transition);
   }
   a:hover {
-    color: var(--clr-primary-1);
-  }
-`;
-
-const CrumbLink = styled(Link)`
-  color: var(--clr-primary-3);
-  padding: 0.5rem;
-  transition: var(--transition);
-
-  &:hover {
     color: var(--clr-primary-1);
   }
 `;
