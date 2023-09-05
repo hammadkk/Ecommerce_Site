@@ -22,29 +22,21 @@ const ProductImages = ({ images = [[]] }) => {
   );
 };
 
-const Wrapper = styled.section`
-  .main {
-    height: 600px;
-  }
-
-  @media (max-width: 576px) {
-    .main {
-      height: 300px;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .main {
-      height: 500px;
-    }
-  }
-`;
+const Wrapper = styled.section``;
 
 const MainImage = styled.img`
   width: 100%;
   display: block;
   border-radius: var(--radius);
   object-fit: cover;
+
+  @media (max-width: 576px) {
+    height: 300px;
+  }
+
+  @media (min-width: 992px) {
+    height: 500px;
+  }
 `;
 
 const Gallery = styled.div`
@@ -52,25 +44,25 @@ const Gallery = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 1rem;
-
-  @media (max-width: 576px) {
-    img {
-      height: 50px;
-    }
-  }
-
-  @media (min-width: 992px) {
-    img {
-      height: 75px;
-    }
-  }
 `;
 
 const GalleryImage = styled.img`
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover;
   height: 100px;
   cursor: pointer;
   border: ${(props) =>
     props.active ? "2px solid var(--clr-primary-5)" : "none"};
+
+  @media (max-width: 576px) {
+    height: 50px;
+  }
+
+  @media (min-width: 992px) {
+    height: 75px;
+  }
 `;
 
 export default ProductImages;

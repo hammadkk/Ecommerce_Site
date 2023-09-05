@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import BreadCrumb from "../components/breadcrumb";
 import { single_product_url } from "../components/data";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { formatPrice } from "../utils/helpers";
 import ProductImages from "../components/ProductImages";
+import Stars from "../components/Stars";
 
 const SingleProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { id } = useParams();
-  const [Product, setProduct] = useState([]);
-  const fetchProducts = async (url) => {
+  const [product, setProduct] = useState([]);
+
+  const fetchProduct = async (url) => {
     try {
       const response = await axios.get(url);
-      const product = response.data;
-      setProduct(product);
+      const productData = response.data;
+      setProduct(productData);
       setLoading(false);
     } catch (err) {
       setError(true);
@@ -28,12 +29,13 @@ const SingleProductPage = () => {
   };
 
   useEffect(() => {
-    fetchProducts(`${single_product_url}${id}`);
+    fetchProduct(`${single_product_url}${id}`);
   }, [id]);
 
   if (loading) {
     return <Loading />;
   }
+
   if (error) {
     return <Error />;
   }
@@ -43,77 +45,101 @@ const SingleProductPage = () => {
     price,
     description,
     stock,
-    // stars,
-    // reviews,
+    stars,
+    reviews,
     id: sku,
     company,
     images,
-  } = Product;
+  } = product;
+
   return (
     <Wrapper>
       <BreadCrumb title={name} Product />
-      <div className="section section-center page">
+      <ProductSection>
         <Link to="/products" className="btn">
           back to products
         </Link>
-        <div className="product-center">
+        <ProductContainer>
           <ProductImages images={images} />
-          <section className="content">
-            <h2>{name}</h2>
-            {/* <Stars stars={stars} reviews={reviews} /> */}
-            <h5 className="price">{formatPrice(price)}</h5>
-            <p className="desc">{description}</p>
-            <p className="info">
-              <span>Available : </span>
+          <ContentSection>
+            <ProductTitle>{name}</ProductTitle>
+            <Stars stars={stars} reviews={reviews} />
+            <Price>{formatPrice(price)}</Price>
+            <Description>{description}</Description>
+            <Info>
+              <InfoSpan>Available :</InfoSpan>
               {stock > 0 ? "In stock" : "out of stock"}
-            </p>
-            <p className="info">
-              <span>SKU :</span>
+            </Info>
+            <Info>
+              <InfoSpan>SKU :</InfoSpan>
               {sku}
-            </p>
-            <p className="info">
-              <span>Brand :</span>
+            </Info>
+            <Info>
+              <InfoSpan>Brand :</InfoSpan>
               {company}
-            </p>
+            </Info>
             <hr />
             {/* {stock > 0 && <AddToCart product={product} />} */}
-          </section>
-        </div>
-      </div>
+          </ContentSection>
+        </ProductContainer>
+      </ProductSection>
     </Wrapper>
   );
 };
-const Wrapper = styled.main`
-  .product-center {
-    display: grid;
-    gap: 4rem;
-    margin-top: 2rem;
-  }
-  .price {
-    color: var(--clr-primary-5);
-  }
-  .desc {
-    line-height: 2;
-    max-width: 45em;
-  }
-  .info {
-    text-transform: capitalize;
-    width: 300px;
-    display: grid;
-    grid-template-columns: 125px 1fr;
-    span {
-      font-weight: 700;
-    }
-  }
 
-  @media (min-width: 992px) {
-    .product-center {
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-    }
-    .price {
-      font-size: 1.25rem;
-    }
+const Wrapper = styled.main`
+  /* Styles for Wrapper component */
+`;
+
+const ProductSection = styled.section`
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  padding: 5rem 0;
+
+  @media screen and (min-width: 992px) {
+    width: 95vw;
   }
 `;
+
+const ProductContainer = styled.div`
+  display: grid;
+  gap: 4rem;
+  margin-top: 2rem;
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const ContentSection = styled.section``;
+
+const ProductTitle = styled.h2``;
+
+const Price = styled.h5`
+  color: var(--clr-primary-5);
+`;
+
+const Description = styled.p`
+  line-height: 2;
+  max-width: 45em;
+`;
+
+const Info = styled.p`
+  text-transform: capitalize;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+
+  span {
+    font-weight: 700;
+  }
+`;
+
+const InfoSpan = styled.span`
+  text-transform: capitalize;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+`;
+
 export default SingleProductPage;
