@@ -9,6 +9,7 @@ import Error from "../components/Error";
 import { formatPrice } from "../utils/helpers";
 import ProductImages from "../components/ProductImages";
 import Stars from "../components/Stars";
+import AddToCart from "../components/AddToCart";
 
 const SingleProductPage = () => {
   const [loading, setLoading] = useState(true);
@@ -79,7 +80,7 @@ const SingleProductPage = () => {
               {company}
             </Info>
             <hr />
-            {/* {stock > 0 && <AddToCart product={product} />} */}
+            {stock > 0 && <AddToCart product={product} />}
           </ContentSection>
         </ProductContainer>
       </ProductSection>
