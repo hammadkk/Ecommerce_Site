@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
+import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
-  const { colors } = product;
+  const { stock, colors } = product;
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increase = () => {
+    setAmount((oldAmount) => Math.min(oldAmount + 1, stock));
+  };
+
+  const decrease = () => {
+    setAmount((oldAmount) => Math.max(oldAmount - 1, 1));
+  };
 
   return (
     <Wrapper>
@@ -23,6 +34,16 @@ const AddToCart = ({ product }) => {
           ))}
         </ColorContainer>
       </Colors>
+      <ButtonContainer>
+        <AmountButtons
+          increase={increase}
+          decrease={decrease}
+          amount={amount}
+        />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
+      </ButtonContainer>
     </Wrapper>
   );
 };
@@ -64,6 +85,15 @@ const ColorButton = styled.button`
   svg {
     font-size: 0.75rem;
     color: var(--clr-white);
+  }
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 2rem;
+
+  .btn {
+    margin-top: 1rem;
+    width: 140px;
   }
 `;
 
