@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { products_url } from "./data";
+import React, { useEffect, useContext, useReducer } from "react";
+import reducer from "../reducers/filter_reducer";
+import { useProductsContext } from "./products_context";
 
 const initialState = {
   filtered_products: [],
@@ -9,18 +10,11 @@ const initialState = {
 const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async (url) => {
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-    } catch (err) {}
-  };
-
+  const { products } = useProductsContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
-    fetchProducts(products_url);
-  }, []);
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
 
   return (
     <FilterContext.Provider
