@@ -56,7 +56,7 @@ const Navbar = () => {
         </LinksNavbar>
       </Nav>
 
-      <StyledAside isOpen={isSidebarOpen}>
+      <StyledAside isopen={isSidebarOpen}>
         <SidebarHeader>
           <img src={logo} alt="comfy sloth" style={{ width: "40px" }} />{" "}
           <CloseBtn onClick={closeSidebar}>
@@ -150,7 +150,7 @@ const StyledAside = styled.aside`
   row-gap: 1rem;
   box-shadow: var(--clr-red-dark);
   transition: var(--transition);
-  transform: ${({ isOpen }) => (isOpen ? "translate(0)" : "translate(-100%)")};
+  transform: ${({ isopen }) => (isopen ? "translate(0)" : "translate(-100%)")};
   @media screen and (max-width: 600px) {
     width: 100%;
   }

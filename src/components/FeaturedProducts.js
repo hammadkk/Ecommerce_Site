@@ -7,30 +7,33 @@ import Error from "./Error";
 import { useProductsContext } from "../context/products_context";
 
 const FeaturedProducts = () => {
-  const { products } = useProductsContext();
-
+  const {
+    products_loading: loading,
+    products_error: error,
+    products,
+  } = useProductsContext();
   const filteredProducts = products.filter(
     (product) => product.featured === true
   );
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
-  // if (error) {
-  //   return <Error />;
-  // }
-  console.log("products", products);
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
   return (
     <Wrapper className="section">
       <div className="title">
         <h2>Featured products</h2>
         <div className="underline"></div>
       </div>
-      {/* <div className="section-center featured">
+      <div className="section-center featured">
         {filteredProducts.slice(0, 3).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
-      </div> */}
+      </div>
       <Link to="/products" className="btn">
         all products
       </Link>
