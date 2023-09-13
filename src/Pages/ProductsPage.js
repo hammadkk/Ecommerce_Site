@@ -2,13 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import ProductList from "../components/ProductList";
 import BreadCrumb from "../components/breadcrumb";
+import Sort from "../components/Sort";
+import Filters from "../components/Filters";
 const ProductsPage = () => {
   return (
     <main>
       <BreadCrumb title="products" />
       <Wrapper className="page">
         <div className="section-center products">
-          <ProductList />
+          <Filters />
+          <div>
+            <Sort />
+            <ProductList />
+          </div>
         </div>
       </Wrapper>
     </main>
