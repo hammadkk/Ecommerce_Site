@@ -4,15 +4,20 @@ import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
 
 const Sort = () => {
-  const { filtered_products: products, grid_view } = useFilterContext();
+  const {
+    filtered_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+  } = useFilterContext();
 
   return (
     <Wrapper>
       <ButtonContainer>
-        <Button active={grid_view}>
+        <Button active={grid_view} onClick={setGridView}>
           <BsFillGridFill />
         </Button>
-        <Button active={!grid_view}>
+        <Button active={!grid_view} onClick={setListView}>
           <BsList />
         </Button>
       </ButtonContainer>
@@ -67,23 +72,6 @@ const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5rem;
-
-  button {
-    background: transparent;
-    border: 1px solid var(--clr-black);
-    color: var(--clr-black);
-    width: 1.5rem;
-    border-radius: var(--radius);
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    svg {
-      font-size: 1rem;
-    }
-  }
 `;
 
 const Button = styled.button`

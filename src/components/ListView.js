@@ -10,7 +10,11 @@ const ListView = ({ products }) => {
         const { id, image, name, price, description } = product;
         return (
           <Article key={id}>
-            <ProductImage src={image} alt={name} />
+            <ProductImagebackground>
+              <Link to={`/products/${id}`}>
+                <ProductImage src={image} alt={name} />
+              </Link>
+            </ProductImagebackground>
             <ProductDetails>
               <ProductName>{name}</ProductName>
               <ProductPrice>{formatPrice(price)}</ProductPrice>
@@ -50,11 +54,16 @@ const ProductImage = styled.img`
   width: 300px;
   height: 200px;
   object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: 1rem;
 `;
 
 const ProductDetails = styled.div``;
+
+const ProductImagebackground = styled.div`
+  background: var(--clr-black);
+  &:hover img {
+    opacity: 0.5;
+  }
+`;
 
 const ProductName = styled.h4`
   margin-bottom: 0.5rem;

@@ -40,7 +40,6 @@ const Image = styled.img`
   display: block;
   object-fit: cover;
   border-radius: var(--radius);
-  transition: var(--transition);
 `;
 
 const Footer = styled.footer`
