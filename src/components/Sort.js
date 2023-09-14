@@ -9,6 +9,8 @@ const Sort = () => {
     grid_view,
     setGridView,
     setListView,
+    sort,
+    updateSort,
   } = useFilterContext();
 
   return (
@@ -25,7 +27,13 @@ const Sort = () => {
       <Divider />
       <SortForm>
         <SortLabel htmlFor="sort">sort by</SortLabel>
-        <SortSelect name="sort" id="sort" className="sort-input">
+        <SortSelect
+          name="sort"
+          id="sort"
+          className="sort-input"
+          value={sort}
+          onChange={updateSort}
+        >
           <option value="price-lowest">price (lowest)</option>
           <option value="price-highest">price (highest)</option>
           <option value="name-a">name (a - z)</option>

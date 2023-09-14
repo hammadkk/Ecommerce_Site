@@ -24,7 +24,7 @@ const ProductsContainer = styled.div`
   display: grid;
   gap: 2rem 1.5rem;
 
-  @media (min-width: 992px) {
+  @media (min-width: 850px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
