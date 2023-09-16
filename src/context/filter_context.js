@@ -7,6 +7,7 @@ import {
   SET_LISTVIEW,
   UPDATE_SORT,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
 } from "../actions";
 
 const initialState = {
@@ -35,6 +36,24 @@ export const FilterProvider = ({ children }) => {
   const updateSort = (e) => {
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    if (name === "category") {
+      value = e.target.textContent;
+    }
+    if (name === "color") {
+      value = e.target.dataset.color;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
   useEffect(() => {
