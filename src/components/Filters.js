@@ -81,7 +81,7 @@ const Filters = () => {
                     data-color="all"
                     className={color === "all" ? "all-btn active" : "all-btn"}
                   >
-                    all
+                    All
                   </Button>
                 );
               }
@@ -113,7 +113,7 @@ const Filters = () => {
           />
         </FormControl>
         <FormControl className="shipping">
-          <label htmlFor="shipping">free shipping</label>
+          <label htmlFor="shipping">Free shipping</label>
           <input
             type="checkbox"
             name="shipping"
@@ -122,7 +122,6 @@ const Filters = () => {
             onChange={updateFilters}
           />
         </FormControl>
-        {/* end of shipping */}
       </form>
     </Wrapper>
   );

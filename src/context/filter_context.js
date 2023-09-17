@@ -8,6 +8,7 @@ import {
   UPDATE_SORT,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
+  FILTER_PRODUCTS,
 } from "../actions";
 
 const initialState = {
@@ -67,8 +68,9 @@ export const FilterProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [state.sort]);
+  }, [state.sort, state.filters]);
   return (
     <FilterContext.Provider
       value={{
