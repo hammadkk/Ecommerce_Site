@@ -9,6 +9,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
+  CLEAR_FILTERS,
 } from "../actions";
 
 const initialState = {
@@ -66,7 +67,9 @@ export const FilterProvider = ({ children }) => {
     }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
-
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
@@ -79,6 +82,7 @@ export const FilterProvider = ({ children }) => {
         setListView,
         updateSort,
         updateFilters,
+        clearFilters,
       }}
     >
       {children}

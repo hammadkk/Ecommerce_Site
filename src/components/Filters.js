@@ -18,6 +18,7 @@ const Filters = () => {
     },
     updateFilters,
     all_products,
+    clearFilters,
   } = useFilterContext();
 
   const categories = getUniqueValues(all_products, "category");
@@ -123,6 +124,9 @@ const Filters = () => {
           />
         </FormControl>
       </form>
+      <ClearButton type="button" onClick={clearFilters}>
+        Clear Filters
+      </ClearButton>
     </Wrapper>
   );
 };
@@ -206,5 +210,10 @@ const ColorButton = styled.button`
     background: var(--clr-primary-5);
   }
 `;
-
+const ClearButton = styled.button`
+  background: var(--clr-red-dark);
+  color: var(--clr-white);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+`;
 export default Filters;
