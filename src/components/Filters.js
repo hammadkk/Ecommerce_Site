@@ -147,6 +147,7 @@ const Wrapper = styled.section`
 
   @media (min-width: 768px) {
     position: sticky;
+    z-index: 1;
   }
 `;
 

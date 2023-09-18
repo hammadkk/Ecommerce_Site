@@ -90,7 +90,7 @@ const Navbar = () => {
         </SocialIcons>
       </StyledAside>
       <NavbarToggle>
-        <img src={logo} alt="comfy sloth" style={{ width: "40px" }} />{" "}
+        <img src={logo} alt="ecommerce" style={{ width: "40px" }} />{" "}
         <SidebarToggle onClick={openSidebar}>
           <FaBars />
         </SidebarToggle>
@@ -150,6 +150,7 @@ const StyledAside = styled.aside`
   row-gap: 1rem;
   box-shadow: var(--clr-red-dark);
   transition: var(--transition);
+  z-index: 2;
   transform: ${({ isopen }) => (isopen ? "translate(0)" : "translate(-100%)")};
   @media screen and (max-width: 600px) {
     width: 100%;
