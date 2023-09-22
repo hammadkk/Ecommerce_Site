@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
-import { PageHero } from "../components";
+import BreadCrumb from "../components/breadcrumb";
 
 const CartPage = () => {
   const { cart } = useCartContext();
@@ -12,19 +12,21 @@ const CartPage = () => {
       <PageWrapper>
         <EmptyCartWrapper>
           <EmptyCartText>Your cart is empty</EmptyCartText>
-          <FillCartLink to="/products">Fill it</FillCartLink>
+          <Link className="btn" to="/products">
+            Fill it
+          </Link>
         </EmptyCartWrapper>
       </PageWrapper>
     );
   }
 
   return (
-    <PageWrapper>
-      <PageHero title="Cart" />
+    <main>
+      <BreadCrumb title="Cart" />
       <CartContentWrapper>
         <CartContentText>Cart content will be here</CartContentText>
       </CartContentWrapper>
-    </PageWrapper>
+    </main>
   );
 };
 
@@ -33,6 +35,7 @@ const PageWrapper = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5rem 0;
   margin-top: 2rem;
 `;
 
@@ -43,14 +46,6 @@ const EmptyCartWrapper = styled.div`
 const EmptyCartText = styled.h2`
   margin-bottom: 1rem;
   text-transform: none;
-`;
-
-const FillCartLink = styled(Link)`
-  text-decoration: none;
-  color: #fff;
-  background-color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
 `;
 
 const CartContentWrapper = styled.div`
