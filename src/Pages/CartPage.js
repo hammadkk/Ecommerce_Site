@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 import BreadCrumb from "../components/breadcrumb";
+import CartContent from "../components/CartContent";
 
 const CartPage = () => {
   const { cart } = useCartContext();
@@ -24,7 +25,7 @@ const CartPage = () => {
     <main>
       <BreadCrumb title="Cart" />
       <CartContentWrapper>
-        <CartContentText>Cart content will be here</CartContentText>
+        <CartContent />
       </CartContentWrapper>
     </main>
   );
