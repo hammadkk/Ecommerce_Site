@@ -6,7 +6,7 @@ import CartItem from "./CartItem";
 import CartColumns from "./CartColumns";
 
 const CartContent = () => {
-  const { cart } = useCartContext();
+  const { cart, clearCart } = useCartContext();
 
   return (
     <Wrapper className="section section-center">
@@ -17,7 +17,7 @@ const CartContent = () => {
       <hr />
       <LinkContainer>
         <LinkButton to="/products">continue shopping</LinkButton>
-        <ClearButton type="button" onClick={() => {}}>
+        <ClearButton type="button" onClick={clearCart}>
           Clear Shopping Cart
         </ClearButton>
       </LinkContainer>

@@ -53,6 +53,4 @@ const CartContentWrapper = styled.div`
   text-align: center;
 `;
 
-const CartContentText = styled.h1``;
-
 export default CartPage;
