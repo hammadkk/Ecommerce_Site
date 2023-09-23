@@ -4,6 +4,7 @@ import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import CartColumns from "./CartColumns";
+import CartTotals from "./CartTotals";
 
 const CartContent = () => {
   const { cart, clearCart } = useCartContext();
@@ -21,6 +22,7 @@ const CartContent = () => {
           Clear Shopping Cart
         </ClearButton>
       </LinkContainer>
+      <CartTotals />
     </Wrapper>
   );
 };
