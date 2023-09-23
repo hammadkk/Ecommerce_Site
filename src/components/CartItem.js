@@ -3,12 +3,20 @@ import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
+import { useCartContext } from "../context/cart_context";
 
 const CartItem = ({ id, image, name, color, price, amount }) => {
+  const { removeItem, toggleAmount } = useCartContext();
+  const increase = () => {
+    toggleAmount(id, "inc");
+  };
+  const decrease = () => {
+    toggleAmount(id, "dec");
+  };
   return (
     <Wrapper>
       <Title>
-        {/* <img src={image} alt={name} /> */}
+        <img src={image} alt={name} />
         <div>
           <ProductName>{name}</ProductName>
           <Color>
@@ -22,12 +30,12 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
       <AmountButtonsWrapper>
         <AmountButtons
           amount={amount}
-          increase={() => {}}
-          decrease={() => {}}
+          increase={increase}
+          decrease={decrease}
         />
       </AmountButtonsWrapper>
       <Subtotal>{formatPrice(price * amount)}</Subtotal>
-      <RemoveButton onClick={() => {}}>
+      <RemoveButton onClick={() => removeItem(id)}>
         <FaTrash />
       </RemoveButton>
     </Wrapper>
@@ -48,11 +56,18 @@ const Wrapper = styled.article`
     align-items: center;
     grid-template-rows: 75px;
   }
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: var(--radius);
+    object-fit: cover;
+  }
 `;
 
 const Title = styled.div`
-  grid-template-rows: 75px;
   display: grid;
+  grid-template-rows: 75px;
   grid-template-columns: 75px 125px;
   align-items: center;
   text-align: left;
