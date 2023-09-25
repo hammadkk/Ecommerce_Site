@@ -95,6 +95,44 @@ export const services = [
     text: "Our company has a rich history of creating custom furniture that spans several generations. We were founded by a family of craftsmen who were passionate about creating beautiful and functional furniture that would stand the test of time. Today, we continue that tradition by using the same time-honored techniques and attention to detail that our founders used over a century ago.",
   },
 ];
+export const reviews = [
+  {
+    id: 1,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg",
+    name: "Maria Ferguson",
+    title: "Interior Designer",
+    quote:
+      "The furniture from this store completely transformed my living room. The quality is outstanding, and the modern design perfectly matches my style.",
+  },
+  {
+    id: 2,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+    name: "John Doe",
+    title: "Homeowner",
+    quote:
+      "I recently purchased a dining table set from this store and I couldn't be happier. The craftsmanship is excellent, and it adds a touch of elegance to my dining area.",
+  },
+  {
+    id: 3,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959121/person-1_aufeoq.jpg",
+    name: "Peter Smith",
+    title: "Apartment Renter",
+    quote:
+      "I was looking for a comfortable and stylish sofa for my apartment, and I found the perfect one at this store. It's incredibly cozy, and the sleek design complements my space.",
+  },
+  {
+    id: 4,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    name: "Susan Andersen",
+    title: "Office Manager",
+    quote:
+      "The office furniture I purchased from this store is top-notch. It's ergonomic, functional, and has greatly improved productivity and comfort for everyone in the office.",
+  },
+];
 
 export const products_url = "https://course-api.com/react-store-products";
 export const single_product_url = `https://course-api.com/react-store-single-product?id=`;

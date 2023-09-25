@@ -24,6 +24,7 @@ const Contact = () => {
 
 const Wrapper = styled.section`
   padding: 5rem 0;
+  background: var(--clr-primary-10);
 
   margin: 0 auto;
 
